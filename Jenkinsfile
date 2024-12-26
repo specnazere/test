@@ -1,19 +1,14 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Read index.html') {
             steps {
-                echo 'Building...'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing...'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying...'
+                script {
+                    // Читаем содержимое файла index.html
+                    def content = readFile('index.html')
+                    // Выводим содержимое в консоль
+                    echo content
+                }
             }
         }
     }
